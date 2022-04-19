@@ -1,16 +1,16 @@
 # -*- coding: utf-8 -*-
 # author lby
 # 基础配置类，放的是在任何环境都不会改变的的值
+import os
 class BaseConfig:
-    BASE_KEY = "基础配置的key"
-    BASE_VALUE = "基础配置的value"
+    SECRET_KEY = os.urandom(24)
 
 
 # 开发环境
 class DevConfig(BaseConfig):
-    DB_HOST = 'admin'
+    DB_HOST = 'localhost'
     DB_PORT = '3306'
-    DB_DATABASE = 'test'
+    DB_DATABASE = 'pyweb'
     DB_USERNAME = 'root'
     DB_PASSWORD = 'root'
     DB_URI = "mysql+pymysql://{username}:{password}@{host}:{port}/{db}?charset=utf8" \

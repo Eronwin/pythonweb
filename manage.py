@@ -25,7 +25,7 @@ app.register_blueprint(admin, url_prefix="/admin")
 # app.config.from_object(config)
 
 # 3、app导入某一个配置类的对象
-# app.config.from_object(myConfig["dev"])
+app.config.from_object(myConfig["dev"])
 
 
 # 初始化SQLAlchemy对象
