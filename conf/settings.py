@@ -12,7 +12,7 @@ class DevConfig(BaseConfig):
     DB_PORT = '3306'
     DB_DATABASE = 'test'
     DB_USERNAME = 'root'
-    DB_PASSWORD = '123456'
+    DB_PASSWORD = 'root'
     DB_URI = "mysql+pymysql://{username}:{password}@{host}:{port}/{db}?charset=utf8" \
         .format(username=DB_USERNAME,
             password=DB_PASSWORD,
