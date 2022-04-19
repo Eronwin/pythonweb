@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 # author lby
+from datetime import timedelta
 from flask import Flask
 
 
@@ -24,12 +25,16 @@ app.register_blueprint(admin, url_prefix="/admin")
 # app.config.from_object(config)
 
 # 3、app导入某一个配置类的对象
-app.config.from_object(myConfig["dev"])
+# app.config.from_object(myConfig["dev"])
 
 
 # 初始化SQLAlchemy对象
 db.init_app(app)
 
+app.config['DEBUG'] = True
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = timedelta(seconds=1)
+
 
 if __name__ == "__main__":
-    app.run(port=8080,debug=True)
+    # app.run(port=8080,debug=True)
+    app.run(port=8080)

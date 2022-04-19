@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>
+        left-menu
+    </title>
+</head>
+
+<body>
+    <li class="nav-item">
+        <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-circle"></i>
+            <p>
+                一级菜单模版
+                <i class="right fas fa-angle-left"></i>
+            </p>
+        </a>
+        <ul class="nav nav-treeview">
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>二级菜单模版</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>二级菜单模版</p>
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li class="nav-item">
+        <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-circle"></i>
+            <p>
+                菜单管理
+                <i class="right fas fa-angle-left"></i>
+            </p>
+        </a>
+        <ul class="nav nav-treeview">
+            <li class="nav-item">
+                <a href="#" class="nav-link" onclick="loadContent('project-add.html')">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>新增/修改页面模版</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" onclick="loadContent('project-list.html')">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>菜单列表</p>
+                </a>
+            </li>
+        </ul>
+    </li>
+
+    <script src="/static/js/left-menu.js"></script>
+</body>
+
+</html>
