@@ -5,15 +5,15 @@ $(function () {
 
 var load_page_list = function () {
     $("#jsGrid1").jsGrid({
-        height: "100%",
+        height: 'auto',
         width: "100%",
 
-        // sorting: true,
-        // paging: true,
+        sorting: true,
+        paging: true,
         pageLoading: true, // 分页加载
         autoload: true, // 自动加载
         pageIndex: 1,    // 初始化页码
-        pageSize: 10,    // 初始化每页显示数量
+        pageSize: 3,    // 初始化每页显示数量
         pageButtonCount: 5,    // 分页按钮数量
         pagePrevText: "上一页",    // 上一页按钮文本
         pageNextText: "下一页",    // 下一页按钮文本
@@ -23,6 +23,7 @@ var load_page_list = function () {
 
         controller: {//请求后台url和参数配置
             loadData: function (filter) {
+                // filter["search"] = $("#search").val();
                 return $.ajax({
                     type: "post",
                     url: "/menu/list/page",
