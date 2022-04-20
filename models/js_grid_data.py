@@ -4,7 +4,7 @@ class JsGridData:
     pageSize = 0
     offset=0
     data = []
-    itermsCount = 0
+    itemsCount = 0
     def __init__(self,parms={}):
         self.pageIndex =int(parms["pageIndex"])
         self.pageSize = int(parms["pageSize"])

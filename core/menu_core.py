@@ -19,14 +19,14 @@ def add_menu(parms={}):
        
     except:
         res.failed()
-
     return jsonify(res.__dict__)
 
 def list_page(parms={}):
-    print("parms:",parms)
+    # print("parms:",parms)
     grid_data = JsGridData(parms)
     data = menu_db.page_list(grid_data.__dict__)
     itemsCount = menu_db.conut()
     grid_data.data = data
     grid_data.itemsCount = itemsCount
+    # print("grid_data:",grid_data.__dict__)
     return jsonify(grid_data.__dict__)

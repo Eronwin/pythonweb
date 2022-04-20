@@ -28,4 +28,5 @@ def page_list(parms={}):
 def conut():
     sql="select count(id) from menu"
     data=db_handler.select(sql,fecth="one")
-    return int(data["conut"])
+    # print(data)
+    return int(data["count(id)"])

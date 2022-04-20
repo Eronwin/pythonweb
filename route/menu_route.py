@@ -19,5 +19,5 @@ def add_menu():
 
 @menu.route("/list/page",methods=["GET","POST"])
 def list_page():
-    res=menu_core.list_page()
+    res=menu_core.list_page(request.form)
     return res
