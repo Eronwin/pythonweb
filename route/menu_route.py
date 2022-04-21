@@ -1,7 +1,7 @@
 
 
 from flask import Blueprint,send_from_directory,request,session,jsonify
-from util import Response
+
 from core import menu_core
 
 menu= Blueprint("menu",__name__)
@@ -20,4 +20,15 @@ def add_menu():
 @menu.route("/list/page",methods=["GET","POST"])
 def list_page():
     res=menu_core.list_page(request.form)
+    return res
+
+@menu.route("/get/id", methods=["GET", "POST"])
+def get_id():
+    res = menu_core.get_id(request.form)
+    return res
+
+
+@menu.route("/update", methods=["GET", "POST"])
+def update():
+    res = menu_core.update(request.form)
     return res

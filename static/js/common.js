@@ -15,7 +15,9 @@ var loadHtml = function (obj) {
 		success: function (data) {
 			// console.log(id);
 			$("#" + obj.dom_id).html(data);
-			obj.func
+			if (obj.func) {
+				obj.func();
+			}
 		}
 	});
 }

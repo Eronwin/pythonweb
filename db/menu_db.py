@@ -7,7 +7,7 @@ def first_all():
     return first_menu
 
 
-def add_menu(parms={}):
+def add_menu(params={}):
 
     sql = """
     INSERT INTO menu
@@ -15,24 +15,45 @@ def add_menu(parms={}):
     VALUES
     (:menu_code,:menu_name,:menu_url,:menu_level,:parent_id,:sort)
     """
-    db_handler.execute(sql, parms)
+    db_handler.execute(sql, params)
 
     
 
-def page_list(parms={}):
-    sql="select * from menu limit :offset,:pageSize"
-    # sql=f"""
-    # select m.*,p.menu_name parent_menu_name from menu m
-    # left join menu pm on m.parent_id=pm.id
-    # where m.menu_name like '%%{parms['search']}%%'
-    # order by m.parent_id,m.sort
-    # limit :offset,:pageSize
-    # """
-    menus=db_handler.select(sql,parms)
+def page_list(params={}):
+    # sql="select * from menu limit :offset,:pageSize"
+    sql=f"""
+    select m.*,pm.menu_name parent_menu_name from menu m
+    left join menu pm on m.parent_id=pm.id
+    where m.menu_name like '%%{params['search']}%%'
+    order by m.parent_id,m.sort
+    limit :offset,:pageSize
+    """
+    menus=db_handler.select(sql,params)
     return menus
 
-def conut(parms={}):
-    sql="select count(id) from menu"
-    # sql=f"select count(id) from menu where menu_name like '%%{parms['search']}%%'"
+def conut(params={}):
+    # sql="select count(id) from menu"
+    sql=f"select count(id) from menu where menu_name like '%%{params['search']}%%'"
     data=db_handler.select(sql,fecth="one")
     return int(data["count(id)"])
+
+def get_id(params={}):
+    sql = "select * from menu where id = :id"
+    data=db_handler.select(sql, params, fecth="one")
+    print("get_id:",data)
+    return data
+
+
+def update(params={}):
+    sql = """
+        UPDATE menu
+        SET menu_code = :menu_code,
+         menu_name = :menu_name,
+         menu_url = :menu_url,
+         menu_level = :menu_level,
+         parent_id = :parent_id,
+         sort = :sort
+        WHERE
+            id = :id
+        """
+    db_handler.execute(sql, params)
