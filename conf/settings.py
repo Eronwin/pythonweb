@@ -1,6 +1,4 @@
-# -*- coding: utf-8 -*-
-# author lby
-# 基础配置类，放的是在任何环境都不会改变的的值
+
 import os
 class BaseConfig:
     SECRET_KEY = os.urandom(24)

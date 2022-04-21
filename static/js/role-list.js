@@ -58,31 +58,40 @@ var load_page_list = function () {
 var update = function (id) {
 
     loadHtml({
-        "url": "menu-add.html",
+        "url": "role-add.html",
         "dom_id": "content",
         "func": function () {
             // alert(id);
             $("#id").val(id);
             $.ajax({
-
                 type: "post",
-                url: "/menu/get/id",
+                url: "/role/get/id",
                 data: { "id": id },
                 dataType: "json",
                 success: function (data) {
-                    // console.log(data);
-                    $("#menu_code").val(data.menu_code)
-                    $("#menu_code").attr("readonly", "readonly")
+                    $("#role_code").val(data.role.role_code)
+                    $("#role_code").attr("readonly", "readonly")
 
-                    $("#menu_name").val(data.menu_name)
-                    $("#menu_url").val(data.menu_url)
-                    $("#menu_level").val(data.menu_level)
+                    $("#role_name").val(data.role.role_name)
 
-                    $("#menu_sort").val(data.sort)
+                    load_menu_tree({
+                        "func": function () {
 
-                    load_parent_menus($("#menu_level"))
-                    $("#parent_id").val(data.parent_id)
+                            var zTreeObj = $.fn.zTree.getZTreeObj("treeDemo")
 
+                            var role_menus = data.role_menus
+                            console.log(role_menus)
+                            $.each(role_menus, function (index, role_menu) {
+
+                                var node = zTreeObj.getNodeByParam("menu_code", role_menu.menu_code)
+                                console.log(node)
+
+                                if (node.parent_id > 0) {
+                                    zTreeObj.checkNode(node, true, true)
+                                }
+                            })
+                        }
+                    })
                 }
             })
         }

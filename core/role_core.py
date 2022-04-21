@@ -20,3 +20,32 @@ def list_page(params={}):
 
 
     return grid_data
+
+@service
+def get_id(params={}):
+    # 1、根据id查询role
+    role = role_db.get_id(params)
+
+    # 2、根据role_code查询role_menu
+    role_menus = role_db.role_menus(role)
+
+    data = {
+        "role": role,
+        "role_menus": role_menus
+    }
+
+    return data
+
+
+@service
+def update(params={}):
+    role_db.update(params)
+
+@service
+def del_id(params={}):
+    role_db.del_id(params)
+
+
+@service
+def all():
+    return role_db.all()

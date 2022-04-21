@@ -1,8 +1,10 @@
 $(function () {
-    load_menu_tree()
+    if ($('#id').val() == "") {
+        load_menu_tree()
+    }
 })
 
-var load_menu_tree = function () {
+var load_menu_tree = function (obj) {
     var setting = {
         check: {
             enable: true
@@ -21,12 +23,22 @@ var load_menu_tree = function () {
         }
     };
     $.ajax({
+        // async: true,
         type: "post",
         url: "/menu/all",
         data: {},
         dataType: "json",
         success: function (data) {
+            console.log(1)
+
             $.fn.zTree.init($("#treeDemo"), setting, data);
+            console.log(2)
+            if (obj && obj.func) {
+                if ($.isFunction(obj.func)) {
+                    obj.func()
+                }
+            }
+            console.log(3)
         }
     })
 }

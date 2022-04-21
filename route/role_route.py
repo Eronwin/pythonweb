@@ -19,3 +19,22 @@ def update():
 def list_page():
     res=role_core.list_page(request.form)
     return res
+
+@role.route("/get/id", methods=["GET", "POST"])
+def get_id():
+    res = role_core.get_id(request.form)
+    return res
+
+
+
+
+@role.route("/del/id", methods=["GET", "POST"])
+def del_id():
+    res = role_core.del_id(request.form) 
+    return res
+
+
+@role.route("/all", methods=["GET", "POST"])
+def all():
+    res = role_core.all()
+    return res
