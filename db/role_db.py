@@ -23,3 +23,20 @@ def add(params={}):
             "params":role_menu_params
         })
     db_handler.execute_many(sqls)
+
+
+def page_list(params={}):
+    # sql="select * from menu limit :offset,:pageSize"
+    sql=f"""
+    select * from role
+    where role_name like '%%{params['search']}%%'
+    limit :offset,:pageSize
+    """
+    menus=db_handler.select(sql,params)
+    return menus
+
+def conut(params={}):
+    # sql="select count(id) from menu"
+    sql=f"select count(id) from role where role_name like '%%{params['search']}%%'"
+    data=db_handler.select(sql,fecth="one")
+    return int(data["count(id)"])

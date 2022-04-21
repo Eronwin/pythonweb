@@ -34,7 +34,7 @@ def update():
     return res
 
 @menu.route("/all",methods=["GET","POST"])
-def all():
+def  all():
     res=menu_core.all()
     # print("menu_core:",res.data)
     return res

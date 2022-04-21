@@ -14,3 +14,8 @@ def add():
 def update():
     res = role_core.update(request.form)
     return res
+
+@role.route("/list/page",methods=["GET","POST"])
+def list_page():
+    res=role_core.list_page(request.form)
+    return res
