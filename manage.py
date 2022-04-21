@@ -8,12 +8,14 @@ from conf.settings import myConfig
 from exts import db
 from route.admin_route import admin
 from route.menu_route import menu
+from route.role_route import role
 app = Flask(__name__)
 
 
 
 app.register_blueprint(admin, url_prefix="/admin")
 app.register_blueprint(menu, url_prefix="/menu")
+app.register_blueprint(role, url_prefix="/role")
 
 # 配置信息
 # 1、在app对象直接设置，耦合高

@@ -32,3 +32,10 @@ def get_id():
 def update():
     res = menu_core.update(request.form)
     return res
+
+@menu.route("/all",methods=["GET","POST"])
+def all():
+    res=menu_core.all()
+    # print("menu_core:",res.data)
+    return res
+    

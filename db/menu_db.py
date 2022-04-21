@@ -57,3 +57,7 @@ def update(params={}):
             id = :id
         """
     db_handler.execute(sql, params)
+def all(params={}):
+    sql = "select * from menu"
+    data=db_handler.select(sql)
+    return data

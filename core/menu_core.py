@@ -37,3 +37,7 @@ def get_id(params={}):
 @service
 def update(params={}):
     menu_db.update(params)
+
+@service
+def all(params={}):
+   return  menu_db.all(params)

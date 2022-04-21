@@ -22,3 +22,11 @@ var loadHtml = function (obj) {
 	});
 }
 
+
+var create_params = function (params_ids) {
+	var params = {};
+	$.each(params_ids, function (index, param_id) {
+		params[param_id] = $("#" + param_id).val();
+	})
+	return params
+}
