@@ -98,5 +98,11 @@ var update = function (id) {
     })
 }
 var del = function (id) {
-    alert(id);
+
+    var params = {
+        "prefix": "/role/",
+        "model_name": "角色",
+        "id": id
+    }
+    del_by_json(params)
 }

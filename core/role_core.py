@@ -23,10 +23,7 @@ def list_page(params={}):
 
 @service
 def get_id(params={}):
-    # 1、根据id查询role
     role = role_db.get_id(params)
-
-    # 2、根据role_code查询role_menu
     role_menus = role_db.role_menus(role)
 
     data = {

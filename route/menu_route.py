@@ -36,6 +36,9 @@ def update():
 @menu.route("/all",methods=["GET","POST"])
 def  all():
     res=menu_core.all()
-    # print("menu_core:",res.data)
     return res
     
+@menu.route("/del/id", methods=["GET", "POST"])
+def del_id():
+    res = menu_core.del_id(request.form)
+    return res

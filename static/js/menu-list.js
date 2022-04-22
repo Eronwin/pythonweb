@@ -93,5 +93,10 @@ var update = function (id) {
     })
 }
 var del = function (id) {
-    alert(id);
+
+    del_by_json({
+        "prefix": "/menu/",
+        "model_name": "菜单",
+        "id": id
+    })
 }

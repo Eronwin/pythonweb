@@ -61,3 +61,7 @@ def all(params={}):
     sql = "select * from menu"
     data=db_handler.select(sql)
     return data
+
+def del_id(params={}):
+    sql = "DELETE FROM menu WHERE id = :id"
+    db_handler.execute(sql, params)

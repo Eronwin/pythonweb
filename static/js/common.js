@@ -30,3 +30,17 @@ var create_params = function (params_ids) {
 	})
 	return params
 }
+
+
+var del_by_json = function (params) {
+	$.ajax({
+		type: "post",
+		url: params.prefix + "del/id",
+		data: { "id": params.id },
+		dataType: "json",
+		success: function (data) {
+			var msg = "删除" + params.model_name + (data.code == "200" ? "成功" : "失败");
+			alert(msg);
+		}
+	})
+}
