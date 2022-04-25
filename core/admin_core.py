@@ -20,10 +20,6 @@ def login(params={}):
 def add(params={}):
     admin_db.add(params)
 
-
-# 列表、修改、删除
-
-
 @service
 def load_select(params={}):
     return admin_db.load_select(params)
@@ -42,3 +38,15 @@ def list_page(params={}):
     grid_data.itemsCount = itemsCount
     # print("grid_data:",grid_data.__dict__)
     return jsonify(grid_data.__dict__)
+
+@service
+def get_id(params={}):
+    return admin_db.get_id(params)
+
+@service
+def update(params={}):
+    admin_db.update(params)
+
+@service
+def del_id(params={}):
+    admin_db.del_id(params)

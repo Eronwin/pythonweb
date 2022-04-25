@@ -83,7 +83,6 @@ def get_count(sql, params={}):
 )
 """
 def execute_many(sqls):
-    print(sqls)
     if not isinstance(sqls, (list, tuple)):
         raise Exception('type of the parameters must be list or tuple')
     if len(sqls) == 0:

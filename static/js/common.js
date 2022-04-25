@@ -13,7 +13,7 @@ var loadHtml = function (obj) {
 		url: "/static/pages/" + obj.url,
 		async: true,
 		success: function (data) {
-			// console.log(id);
+			console.log(obj);
 			$("#" + obj.dom_id).html(data);
 			if (obj.func) {
 				obj.func();
@@ -64,7 +64,8 @@ var submit_add_update = function (submit_form_params) {
 	str += submit_form_params.model_name
 	// 如果新增页，url="/menu/add"，str = "新增"
 	// 如果修改页，url="/menu/update"，str = "修改"，params多一个参数
-
+	console.log(submit_form_params.params);
+	console.log(url);
 	$.ajax({
 		type: "post",
 		url: url,

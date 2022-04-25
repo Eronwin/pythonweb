@@ -61,7 +61,7 @@ var load_page_list = function () {
 var update = function (id) {
 
     loadHtml({
-        "url": "menu-add.html",
+        "url": "user-add.html",
         "dom_id": "content",
         "func": function () {
             // alert(id);
@@ -69,22 +69,18 @@ var update = function (id) {
             $.ajax({
 
                 type: "post",
-                url: "/menu/get/id",
+                url: "/admin/get/id",
                 data: { "id": id },
                 dataType: "json",
                 success: function (data) {
                     // console.log(data);
-                    $("#menu_code").val(data.menu_code)
-                    $("#menu_code").attr("readonly", "readonly")
+                    $("#username").val(data.username);
 
-                    $("#menu_name").val(data.menu_name)
-                    $("#menu_url").val(data.menu_url)
-                    $("#menu_level").val(data.menu_level)
-
-                    $("#menu_sort").val(data.sort)
-
-                    load_parent_menus($("#menu_level"))
-                    $("#parent_id").val(data.parent_id)
+                    $("#password").val(data.password);
+                    $("#real_name").val(data.real_name);
+                    $("#job_no").val(data.job_no);
+                    load_roles()
+                    $("#role_code").val(data.role_code);
 
                 }
             })

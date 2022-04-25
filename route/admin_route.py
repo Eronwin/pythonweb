@@ -42,3 +42,18 @@ def load_select():
 def list_page():
     res=admin_core.list_page(request.form)
     return res
+
+@admin.route("/get/id", methods=["GET", "POST"])
+def get_id():
+    res = admin_core.get_id(request.form)
+    return res
+
+@admin.route("/update", methods=["GET", "POST"])
+def update():
+    res = admin_core.update(request.form)
+    return res
+    
+@admin.route("/del/id", methods=["GET", "POST"])
+def del_id():
+    res = admin_core.del_id(request.form)
+    return res

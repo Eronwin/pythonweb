@@ -41,7 +41,6 @@ def conut(params={}):
 def get_id(params={}):
     sql = "select * from menu where id = :id"
     data=db_handler.select(sql, params, fecth="one")
-    print("get_id:",data)
     return data
 
 

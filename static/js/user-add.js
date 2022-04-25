@@ -1,5 +1,8 @@
 $(function () {
-    load_roles()
+    if ($("#id").val() == "") {
+        load_roles()
+    }
+
 })
 
 // 加载角色下拉列表
@@ -7,6 +10,7 @@ var load_roles = function () {
     $.ajax({
         type: "post",
         url: "/role/all",
+        async: false,
         data: {},
         dataType: "json",
         success: function (data) {
@@ -24,7 +28,7 @@ var submit_form = function () {
     var params_ids = ["username", "password", "real_name", "job_no", "role_code"]
     // 组装请求参数，表单对象（输入框、下拉列表。。。）获取的值都是$("#menu_code").val()
     var params = create_params(params_ids)
-
+    console.log(params)
     var prefix = "/admin/"  // 请求前缀，一级路径
     var model_name = "用户"  // 操作的模块的名称
 
