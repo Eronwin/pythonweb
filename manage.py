@@ -21,4 +21,4 @@ db.init_app(app)
 
 
 if __name__ == "__main__":
-    app.run(port=8080,debug=True)
+    app.run(port=8090,debug=True)
