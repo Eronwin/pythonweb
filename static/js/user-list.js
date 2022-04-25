@@ -30,7 +30,7 @@ var load_page_list = function () {
                     data: filter,
                     dataType: "json",
                     success: function (data) {
-                        console.log(data);
+                        //    console.log(data);
                         return data;
                     }
                 })
