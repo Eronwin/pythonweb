@@ -9,6 +9,8 @@ from exts import db
 from route.admin_route import admin
 from route.menu_route import menu
 from route.role_route import role
+from route.video_info_route import video_info
+from route.video_route import video
 app = Flask(__name__)
 
 
@@ -16,6 +18,8 @@ app = Flask(__name__)
 app.register_blueprint(admin, url_prefix="/admin")
 app.register_blueprint(menu, url_prefix="/menu")
 app.register_blueprint(role, url_prefix="/role")
+app.register_blueprint(video_info, url_prefix="/video-info")
+app.register_blueprint(video, url_prefix="/video")
 
 @app.errorhandler(404)
 def page_not_found(error):
