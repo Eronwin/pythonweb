@@ -44,3 +44,31 @@ def all(params={}):
 @service
 def del_id(params={}):
     menu_db.del_id(params)
+
+
+@service
+def left(user={}):
+
+    first_menus = []
+
+    left_menus = []
+
+    if user["username"] == "admin":
+        first_menus = menu_db.first_all()
+    else:
+        first_menus = menu_db.first_menus_username(user)
+
+    for first_menu in first_menus:
+        user["parent_id"] = first_menu["id"]
+        second_menus = menu_db.second_menus_username(user)
+        left_menus.append({
+            "first_menu": first_menu,
+            "second_menus": second_menus
+        })
+
+    data = {
+        "code": "200",
+        "left_menus": left_menus
+    }
+
+    return data

@@ -90,8 +90,8 @@ var update = function (id) {
 var del = function (id) {
 
     del_by_json({
-        "prefix": "/menu/",
-        "model_name": "菜单",
+        "prefix": "/admin/",
+        "model_name": "用户",
         "id": id
     })
 }

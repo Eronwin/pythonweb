@@ -65,3 +65,44 @@ def all(params={}):
 def del_id(params={}):
     sql = "DELETE FROM menu WHERE id = :id"
     db_handler.execute(sql, params)
+
+
+
+
+def first_menus_username(user={}):
+    sql = """
+        SELECT m.* FROM menu m 
+        LEFT JOIN role_menu rm ON rm.menu_code = m.menu_code
+        LEFT JOIN role r ON r.role_code = rm.role_code
+        LEFT JOIN admin_role ar ON ar.role_code = r.role_code 
+        WHERE m.menu_level = 1 AND ar.username = :username 
+        order by m.sort
+        """
+
+    return db_handler.select(sql, user)
+
+
+def second_menus_username(user={}):
+    sql = """
+        SELECT m.* FROM menu m 
+        $left_join_sql
+        WHERE m.menu_level = 2 AND m.parent_id = :parent_id $other_user_sql
+        order by m.sort
+        """
+
+    left_join_sql = """
+        LEFT JOIN role_menu rm ON rm.menu_code = m.menu_code
+        LEFT JOIN role r ON r.role_code = rm.role_code
+        LEFT JOIN admin_role ar ON ar.role_code = r.role_code 
+        """
+
+    other_user_sql = "AND ar.username = :username"
+
+    if user["username"] != "admin":
+        sql = sql.replace("$left_join_sql", left_join_sql)
+        sql = sql.replace("$other_user_sql", other_user_sql)
+    else:
+        sql = sql.replace("$left_join_sql", "")
+        sql = sql.replace("$other_user_sql", "")
+
+    return db_handler.select(sql, user)

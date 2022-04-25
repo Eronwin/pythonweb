@@ -42,3 +42,13 @@ def  all():
 def del_id():
     res = menu_core.del_id(request.form)
     return res
+
+@menu.route("/left", methods=["GET", "POST"])
+def left():
+    # 从session中获取登录的用户
+    user = session["current_user"]
+    # ajax的请求参数，request.form，是dict
+    res = menu_core.left(user)
+    # res 是menu_core返回的，是用jsonify转换的json，里面不光是json，还有response对象
+
+    return res
