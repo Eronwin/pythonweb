@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # author lby
 from datetime import timedelta
-from flask import Flask
+from flask import Flask, render_template, request, redirect, url_for, session, flash
 
 
 from conf.settings import myConfig
@@ -17,21 +17,13 @@ app.register_blueprint(admin, url_prefix="/admin")
 app.register_blueprint(menu, url_prefix="/menu")
 app.register_blueprint(role, url_prefix="/role")
 
-# 配置信息
-# 1、在app对象直接设置，耦合高
-# app.config.update(
-#     DEBUG=True,
-#     HELLO="WORLD"
-# )
-
-# 2、写一个配置文件，app对象导入配置文件
-# app.config.from_object(config)
-
-# 3、app导入某一个配置类的对象
+@app.errorhandler(404)
+def page_not_found(error):
+    return render_template('404.html'), 404
 app.config.from_object(myConfig["dev"])
 
 
-# 初始化SQLAlchemy对象
+
 db.init_app(app)
 
 app.config['DEBUG'] = True

@@ -28,6 +28,7 @@ def page_list(params={}):
     order by m.parent_id,m.sort
     limit :offset,:pageSize
     """
+    print(sql)
     menus=db_handler.select(sql,params)
     return menus
 
