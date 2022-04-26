@@ -111,7 +111,7 @@ a, .anim {
 .Channels .title_name .link_name a{ margin:0px 10px; color:#333}
 /********************顶部样式********************/
 .background_color{ background-color:#f0f0f0}
-.header_top{ height:80px; z-index:123; background:url(../images/overlay.png) repeat; position:absolute; top:0px; width:100%; left:0px; box-shadow:0px 1px 7px #333333}
+.header_top{ height:80px; z-index:123; background:url(/static/images/overlay.png) repeat; position:absolute; top:0px; width:100%; left:0px; box-shadow:0px 1px 7px #333333}
 .header_top .logo_style{ width:250px; height:80px; float:left;}
 .header_top .search_stye{ width:600px; float:right; height:80px;}
 .header_top .search_stye .search{ width:400px; border:0px; border-radius:3px 0px 0px 3px; margin-top:19px; height:40px; line-height:30px; font-size:12px; padding:5px;}
