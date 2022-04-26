@@ -20,10 +20,10 @@ def type_id():
     return res
 
 
-@video.route("/pic/<pic>")
+@video.route("/pic/<pic>", methods=["GET"])
 def pic_path(pic):
-    print(pic)
-    return send_file(pic)
+    print("执行路由",pic)
+    return send_file("/Users/xiamujin/Desktop/pythonweb/pic/"+pic)
 
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__)).replace("route", "")
